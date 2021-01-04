@@ -12,7 +12,7 @@ jobs:
       PUSH_KEY: ${{ secrets.PUSH_KEY }}
       MyFruit: ${{ secrets.MyFruit }}
       MyBean: ${{ secrets.MyBean }}
-      MyPet1: ${{ secrets.MyPet }}
+      MyPet: ${{ secrets.MyPet }}
       MyDreamFactory: ${{ secrets.MyDreamFactory }}
       MyJdFactory: ${{ secrets.MyJdFactory }}
       MyJdzz: ${{ secrets.MyJdzz }}
