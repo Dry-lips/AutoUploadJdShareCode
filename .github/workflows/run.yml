@@ -131,7 +131,7 @@ jobs:
             returnCode=0;
             while (($returnCode != 400));
             do
-              returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcrazyjoy/create/${{ env.MyJoy1 }}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcrazyjoy/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
               echo "returnCode="$returnCode;
             done;
           done;
