@@ -95,7 +95,7 @@ jobs:
           arr={$code_str};
           IFS="$OLD_IFS";
           for m in ${arr[@]}
-            do
+          do
             returnCode=0;
             while (($returnCode != 400));
             do
@@ -112,6 +112,7 @@ jobs:
           arr={$code_str};
           IFS="$OLD_IFS";
           for m in ${arr[@]}
+          do
             returnCode=0;
             while (($returnCode != 400));
             do
@@ -128,6 +129,7 @@ jobs:
           arr={$code_str};
           IFS="$OLD_IFS";
           for m in ${arr[@]}
+          do
             returnCode=0;
             while (($returnCode != 400));
             do
