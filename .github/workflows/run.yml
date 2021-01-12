@@ -10,14 +10,14 @@ jobs:
       TG_USER_ID: ${{ secrets.TG_USER_ID }}
       TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
       PUSH_KEY: ${{ secrets.PUSH_KEY }}
-      MyFruit: ${{ secrets.MyFruit }}
-      MyBean: ${{ secrets.MyBean }}
-      MyPet: ${{ secrets.MyPet }}
-      MyDreamFactory: ${{ secrets.MyDreamFactory }}
-      MyJdFactory: ${{ secrets.MyJdFactory }}
+      MyFruit: ${{ secrets.MYFRUIT }}
+      MyBean: ${{ secrets.MYBEAN }}
+      MyPet: ${{ secrets.MYPET }}
+      MyDreamFactory: ${{ secrets.MYDREAMFACTORY }}
+      MyJdFactory: ${{ secrets.MYJDFACTORY }}
       MyJdzz: ${{ secrets.MyJdzz }}
-      MyJoy: ${{ secrets.MyJoy }}
-      MyJdCash: ${{ secrets.MyJdCash }}
+      MyJoy: ${{ secrets.MYJOY }}
+      MyJdCash: ${{ secrets.MYJDCASH }}
     steps:
       - name: "京东农场互助码上传"
         if: env.MyFruit
