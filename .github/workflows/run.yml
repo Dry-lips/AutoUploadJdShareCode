@@ -17,6 +17,7 @@ jobs:
       MyJdFactory: ${{ secrets.MyJdFactory }}
       MyJdzz: ${{ secrets.MyJdzz }}
       MyJoy: ${{ secrets.MyJoy }}
+      MyJdCash: ${{ secrets.MyJdCash }}
     steps:
       - name: "京东农场互助码上传"
         if: env.MyFruit
@@ -134,6 +135,23 @@ jobs:
             while (($returnCode != 400));
             do
               returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcrazyjoy/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: "签到领现金互助码上传"
+        if: env.MyJdCash
+        run: |
+          code_str=${{env.MyJdCash}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcash/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
               echo "returnCode="$returnCode;
             done;
           done;
