@@ -1,169 +1,169 @@
-# name: 自动上传京东互助码
-# on:
-#   schedule:
-#     - cron: '10 18 1,10,20 * *'
-#   workflow_dispatch:
-# jobs:
-#   jdJob:
-#     runs-on: ubuntu-latest
-#     env:
-#       TG_USER_ID: ${{ secrets.TG_USER_ID }}
-#       TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-#       PUSH_KEY: ${{ secrets.PUSH_KEY }}
-#       MyFruit: ${{ secrets.MYFRUIT }}
-#       MyBean: ${{ secrets.MYBEAN }}
-#       MyPet: ${{ secrets.MYPET }}
-#       MyDreamFactory: ${{ secrets.MYDREAMFACTORY }}
-#       MyJdFactory: ${{ secrets.MYJDFACTORY }}
-#       MyJdzz: ${{ secrets.MyJdzz }}
-#       MyJoy: ${{ secrets.MYJOY }}
-#       MyJdCash: ${{ secrets.MYJDCASH }}
-#     steps:
-#       - name: "京东农场互助码上传"
-#         if: env.MyFruit
-#         run: |
-#           code_str=${{env.MyFruit}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl http://api.turinglabs.net/api/v1/jd/farm/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode;
-#             done;
-#           done;
-#       - name: "种豆得豆互助码上传"
-#         if: env.MyBean
-#         run: |
-#           code_str=${{env.MyBean}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl http://api.turinglabs.net/api/v1/jd/bean/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode;
-#             done;
-#           done;
-#       - name: "东东萌宠互助码上传"
-#         if: env.MyPet
-#         run: |
-#           code_str=${{env.MyPet}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl http://api.turinglabs.net/api/v1/jd/pet/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode; 
-#             done;
-#           done;
-#       - name: "京喜工厂互助码上传"
-#         if: env.MyDreamFactory
-#         run: |
-#           code_str=${{env.MyDreamFactory}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl http://api.turinglabs.net/api/v1/jd/jxfactory/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode;
-#             done;
-#           done;
-#       - name: "东东工厂互助码上传"
-#         if: env.MyJdFactory
-#         run: |
-#           code_str=${{env.MyJdFactory}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl http://api.turinglabs.net/api/v1/jd/ddfactory/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode;
-#             done;
-#           done;
-#       - name: "京东赚赚互助码上传"
-#         if: env.MyJdzz
-#         run: |
-#           code_str=${{env.MyJdzz}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl https://code.chiang.fun/api/v1/jd/jdzz/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode;
-#             done;
-#           done;
-#       - name: "疯狂的Joy互助码上传"
-#         if: env.MyJoy
-#         run: |
-#           code_str=${{env.MyJoy}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcrazyjoy/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode;
-#             done;
-#           done;
-#       - name: "签到领现金互助码上传"
-#         if: env.MyJdCash
-#         run: |
-#           code_str=${{env.MyJdCash}};
-#           OLD_IFS="$IFS";
-#           IFS=",";
-#           arr={$code_str};
-#           IFS="$OLD_IFS";
-#           for m in ${arr[@]}
-#           do
-#             returnCode=0;
-#             while (($returnCode != 400));
-#             do
-#               returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcash/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
-#               echo "returnCode="$returnCode;
-#             done;
-#           done;
-#       - name: Notify To Telegram
-#         if: env.TG_USER_ID && env.TG_BOT_TOKEN
-#         run: |
-#           curl -s -o /dev/null -X POST https://api.telegram.org/bot${{ env.TG_BOT_TOKEN }}/sendMessage
-#           -H "Content-Type: application/json"
-#           --data '{"text": "${{github.workflow}}完成！","chat_id": "${{ env.TG_USER_ID }}"}'
-#       - name: Notify To Server酱
-#         if: env.PUSH_KEY
-#         run: |
-#           curl -s -o /dev/null -X POST https://sc.ftqq.com/${{ env.PUSH_KEY }}.send
-#           -H "Content-Type: application/x-www-form-urlencoded"
-#           --data 'text=${{ github.workflow }}完成！&desp=${{ github.workflow }}完成！'
+name: 自动上传京东互助码
+on:
+  schedule:
+    - cron: '10 18 1,10,20 * *'
+  workflow_dispatch:
+jobs:
+  jdJob:
+    runs-on: ubuntu-latest
+    env:
+      TG_USER_ID: ${{ secrets.TG_USER_ID }}
+      TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+      PUSH_KEY: ${{ secrets.PUSH_KEY }}
+      MyFruit: ${{ secrets.MYFRUIT }}
+      MyBean: ${{ secrets.MYBEAN }}
+      MyPet: ${{ secrets.MYPET }}
+      MyDreamFactory: ${{ secrets.MYDREAMFACTORY }}
+      MyJdFactory: ${{ secrets.MYJDFACTORY }}
+      MyJdzz: ${{ secrets.MyJdzz }}
+      MyJoy: ${{ secrets.MYJOY }}
+      MyJdCash: ${{ secrets.MYJDCASH }}
+    steps:
+      - name: "京东农场互助码上传"
+        if: env.MyFruit
+        run: |
+          code_str=${{env.MyFruit}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl http://api.turinglabs.net/api/v1/jd/farm/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: "种豆得豆互助码上传"
+        if: env.MyBean
+        run: |
+          code_str=${{env.MyBean}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl http://api.turinglabs.net/api/v1/jd/bean/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: "东东萌宠互助码上传"
+        if: env.MyPet
+        run: |
+          code_str=${{env.MyPet}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl http://api.turinglabs.net/api/v1/jd/pet/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode; 
+            done;
+          done;
+      - name: "京喜工厂互助码上传"
+        if: env.MyDreamFactory
+        run: |
+          code_str=${{env.MyDreamFactory}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl http://api.turinglabs.net/api/v1/jd/jxfactory/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: "东东工厂互助码上传"
+        if: env.MyJdFactory
+        run: |
+          code_str=${{env.MyJdFactory}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl http://api.turinglabs.net/api/v1/jd/ddfactory/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: "京东赚赚互助码上传"
+        if: env.MyJdzz
+        run: |
+          code_str=${{env.MyJdzz}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl https://code.chiang.fun/api/v1/jd/jdzz/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: "疯狂的Joy互助码上传"
+        if: env.MyJoy
+        run: |
+          code_str=${{env.MyJoy}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcrazyjoy/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: "签到领现金互助码上传"
+        if: env.MyJdCash
+        run: |
+          code_str=${{env.MyJdCash}};
+          OLD_IFS="$IFS";
+          IFS=",";
+          arr={$code_str};
+          IFS="$OLD_IFS";
+          for m in ${arr[@]}
+          do
+            returnCode=0;
+            while (($returnCode != 400));
+            do
+              returnCode=`curl https://code.chiang.fun/api/v1/jd/jdcash/create/${m}/ | sed 's/ //g' | grep -Po '(?<="code":)[0-9]+'`;
+              echo "returnCode="$returnCode;
+            done;
+          done;
+      - name: Notify To Telegram
+        if: env.TG_USER_ID && env.TG_BOT_TOKEN
+        run: |
+          curl -s -o /dev/null -X POST https://api.telegram.org/bot${{ env.TG_BOT_TOKEN }}/sendMessage
+          -H "Content-Type: application/json"
+          --data '{"text": "${{github.workflow}}完成！","chat_id": "${{ env.TG_USER_ID }}"}'
+      - name: Notify To Server酱
+        if: env.PUSH_KEY
+        run: |
+          curl -s -o /dev/null -X POST https://sc.ftqq.com/${{ env.PUSH_KEY }}.send
+          -H "Content-Type: application/x-www-form-urlencoded"
+          --data 'text=${{ github.workflow }}完成！&desp=${{ github.workflow }}完成！'
